@@ -38,41 +38,46 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(74, 112);
+			this.label1.Font = new System.Drawing.Font("Yu Gothic", 12F);
+			this.label1.Location = new System.Drawing.Point(73, 91);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(55, 13);
+			this.label1.Size = new System.Drawing.Size(86, 21);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Username";
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
+			this.label2.Font = new System.Drawing.Font("Yu Gothic", 12F);
 			this.label2.Location = new System.Drawing.Point(77, 145);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(53, 13);
+			this.label2.Size = new System.Drawing.Size(82, 21);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Password";
 			// 
 			// usernameTB
 			// 
-			this.usernameTB.Location = new System.Drawing.Point(169, 104);
+			this.usernameTB.Font = new System.Drawing.Font("Yu Gothic", 12F);
+			this.usernameTB.Location = new System.Drawing.Point(169, 88);
 			this.usernameTB.Name = "usernameTB";
-			this.usernameTB.Size = new System.Drawing.Size(100, 20);
+			this.usernameTB.Size = new System.Drawing.Size(100, 33);
 			this.usernameTB.TabIndex = 2;
 			// 
 			// passwordTB
 			// 
+			this.passwordTB.Font = new System.Drawing.Font("Yu Gothic", 12F);
 			this.passwordTB.Location = new System.Drawing.Point(169, 142);
 			this.passwordTB.Name = "passwordTB";
 			this.passwordTB.PasswordChar = '*';
-			this.passwordTB.Size = new System.Drawing.Size(100, 20);
+			this.passwordTB.Size = new System.Drawing.Size(100, 33);
 			this.passwordTB.TabIndex = 3;
 			// 
 			// loginBT
 			// 
-			this.loginBT.Location = new System.Drawing.Point(143, 197);
+			this.loginBT.Font = new System.Drawing.Font("Yu Gothic", 12F);
+			this.loginBT.Location = new System.Drawing.Point(131, 196);
 			this.loginBT.Name = "loginBT";
-			this.loginBT.Size = new System.Drawing.Size(75, 23);
+			this.loginBT.Size = new System.Drawing.Size(75, 30);
 			this.loginBT.TabIndex = 4;
 			this.loginBT.Text = "Login";
 			this.loginBT.UseVisualStyleBackColor = true;

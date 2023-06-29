@@ -29,7 +29,6 @@ namespace CompanyManagementApp
 			string username = usernameTB.Text;
 			string password = passwordTB.Text;
 
-			// Perform authentication logic here (e.g., check against database, hardcoded credentials, etc.)
 			bool isAuthenticated = AuthenticateUser(username, password);
 
 			if (isAuthenticated)
@@ -47,7 +46,6 @@ namespace CompanyManagementApp
 		{
 			string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=company;";
 			string query = "SELECT COUNT(*) FROM managers_passwords WHERE username = @username AND password = @password";
-			MessageBox.Show(query);
 			using (MySqlConnection connection = new MySqlConnection(connectionString))
 			{
 				connection.Open();
@@ -56,7 +54,6 @@ namespace CompanyManagementApp
 				{
 					command.Parameters.AddWithValue("@username", username);
 					command.Parameters.AddWithValue("@password", password);
-
 					int count = Convert.ToInt32(command.ExecuteScalar());
 
 					return count > 0;

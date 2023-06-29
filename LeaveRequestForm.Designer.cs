@@ -44,8 +44,9 @@
 			this.submitBT.Name = "submitBT";
 			this.submitBT.Size = new System.Drawing.Size(75, 23);
 			this.submitBT.TabIndex = 10;
-			this.submitBT.Text = "Submit Data";
+			this.submitBT.Text = "Submit";
 			this.submitBT.UseVisualStyleBackColor = true;
+			this.submitBT.Click += new System.EventHandler(this.submitBT_Click);
 			// 
 			// dateTimePickerStart
 			// 
@@ -81,11 +82,10 @@
 			// 
 			// reasonTB
 			// 
-			this.reasonTB.Location = new System.Drawing.Point(312, 143);
-			this.reasonTB.MaxLength = 200;
-			this.reasonTB.MinimumSize = new System.Drawing.Size(200, 200);
+			this.reasonTB.Location = new System.Drawing.Point(310, 143);
+			this.reasonTB.MaxLength = 0;
 			this.reasonTB.Name = "reasonTB";
-			this.reasonTB.Size = new System.Drawing.Size(200, 20);
+			this.reasonTB.Size = new System.Drawing.Size(217, 20);
 			this.reasonTB.TabIndex = 15;
 			// 
 			// label3
@@ -110,7 +110,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(584, 361);
 			this.Controls.Add(this.exitBT);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.reasonTB);
