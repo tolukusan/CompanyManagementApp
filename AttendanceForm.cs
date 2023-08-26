@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 
 namespace CompanyManagementApp
@@ -68,7 +61,7 @@ namespace CompanyManagementApp
 		}
 		private void InsertAttendanceRecord(int employeeId, string attendanceType)
 		{
-			string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=company;"; 
+			string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=company;";
 			string query = "INSERT INTO Attendance (employee_id, timestamp, attendance_type) VALUES (@employeeId, NOW(), @attendanceType)";
 
 			using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -93,7 +86,7 @@ namespace CompanyManagementApp
 							MessageBox.Show("Failed to record attendance.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						}
 					}
-					catch(Exception ex)
+					catch (Exception ex)
 					{ MessageBox.Show("You tried to enter data that doesn't exist, try again", ex.Message); }
 				}
 			}
@@ -110,7 +103,13 @@ namespace CompanyManagementApp
 			{
 				MessageBox.Show("Invalid employee ID. Please enter a valid numeric value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			
+
+
+		}
+
+		private void exitBT_Click(object sender, EventArgs e)
+		{
+			this.Close();
 
 		}
 	}

@@ -37,6 +37,7 @@
 			this.ReqManBT = new System.Windows.Forms.Button();
 			this.employeeIDTB = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.exitBT = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// clockInBT
@@ -75,7 +76,7 @@
 			// switchToLeaveReqBT
 			// 
 			this.switchToLeaveReqBT.Font = new System.Drawing.Font("Yu Gothic", 12F);
-			this.switchToLeaveReqBT.Location = new System.Drawing.Point(12, 266);
+			this.switchToLeaveReqBT.Location = new System.Drawing.Point(318, 48);
 			this.switchToLeaveReqBT.Name = "switchToLeaveReqBT";
 			this.switchToLeaveReqBT.Size = new System.Drawing.Size(160, 60);
 			this.switchToLeaveReqBT.TabIndex = 4;
@@ -106,7 +107,7 @@
 			// ReqManBT
 			// 
 			this.ReqManBT.Font = new System.Drawing.Font("Yu Gothic", 12F);
-			this.ReqManBT.Location = new System.Drawing.Point(215, 266);
+			this.ReqManBT.Location = new System.Drawing.Point(308, 140);
 			this.ReqManBT.Name = "ReqManBT";
 			this.ReqManBT.Size = new System.Drawing.Size(180, 60);
 			this.ReqManBT.TabIndex = 13;
@@ -132,11 +133,23 @@
 			this.label2.TabIndex = 15;
 			this.label2.Text = "EmployeeID";
 			// 
+			// exitBT
+			// 
+			this.exitBT.Font = new System.Drawing.Font("Yu Gothic", 12F);
+			this.exitBT.Location = new System.Drawing.Point(452, 319);
+			this.exitBT.Name = "exitBT";
+			this.exitBT.Size = new System.Drawing.Size(120, 30);
+			this.exitBT.TabIndex = 16;
+			this.exitBT.Text = "Exit";
+			this.exitBT.UseVisualStyleBackColor = true;
+			this.exitBT.Click += new System.EventHandler(this.exitBT_Click);
+			// 
 			// AttendanceForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(584, 361);
+			this.Controls.Add(this.exitBT);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.employeeIDTB);
 			this.Controls.Add(this.ReqManBT);
@@ -165,5 +178,6 @@
 		private System.Windows.Forms.Button ReqManBT;
 		private System.Windows.Forms.TextBox employeeIDTB;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Button exitBT;
 	}
 }

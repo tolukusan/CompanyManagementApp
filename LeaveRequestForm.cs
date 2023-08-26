@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 
 namespace CompanyManagementApp
@@ -43,7 +36,7 @@ namespace CompanyManagementApp
 		}
 		private void InsertLeaveRequest(DateTime startDate, DateTime endDate, string reason)
 		{
-			string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=company;";  
+			string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=company;";
 			string query = "INSERT INTO leaverequests (employee_id, start_date, end_date, reason, status) " +
 						   "VALUES (@employeeId, @startDate, @endDate, @reason, 'Pending')";
 
@@ -68,6 +61,11 @@ namespace CompanyManagementApp
 			dateTimePickerStart.Value = DateTime.Today;
 			dateTimePickerEnd.Value = DateTime.Today;
 			reasonTB.Clear();
+		}
+
+		private void exitBT_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }
