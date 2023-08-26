@@ -1,0 +1,46 @@
+EmployeeRegistrationForm
+submitBT
+I created strings to store values from textboxes, the purpose was to later input them into tables. I then made a connection and SQL query string to the MySQL database and stored it as connectionString and query respectively, it uses the default values in username, password, port and datasource. The only change I made was the database name which was “company” the query was just an SQL statement with placeholders for the variables. The if-else statement validates the user input. I made an object of the mysqlconnection class called connector using the connectionstring as an argument.  I made an object of the sqlcommand class names command with query and connectionstring as arguments. I opened and closed the connection to the database in a try-catch block without using the dispose method. command.ExecuteNonQuery() returns the number of rows affected by an SQL statement and stored them in rowsAffected, the code in the if statement runs if the rows affected is true (rowsAffected > 0) which also clears the fields. The else and catch just give error messages. 
+switchToAttendanceBT
+this creates an object of the AttendaceForm and displays the form modally.
+exitBT
+It closes the form. It works the same way for the other forms.
+
+AttendanceForm
+switchToLeaveReqBT
+It opens the LeaveRequestForm in a modeless way and passes EmployeeID as an argument, this was implemented in the LeaveRequestForm’s LeaveRequestForm method. 
+Button1 (also known as ReqManBT)
+This creates an instance of the LoginForm and opens it. The following if-statement checks if the DialogResult of the LoginForm is OK (1), then opens the LeaverequestsManagementForm while closing the AttendanceForm.
+clockInBT
+An if statement is used to check whether the content of the employeeIDTB is valid using the tryParse method. If true, the block of code pass values in the method InsertAttendanceRecord and display the current time as a label. If false, a message block appears to inform the user of an error. DateTime is part of the System header files, DateTime.Now creates a DateTime object of the current time based of computer system. 
+clockOutBT
+Likewise for the button above, an if statement is used to check whether the content of the employeeIDTB is valid using the tryParse method. If true, the block of code pass values in the method InsertAttendanceRecord and display the current time as a label beside the button. If false, a message block appears to inform the user of an error.
+InsertAttendanceReord method
+This method inputs values of an employee’s attendance into the attendance table in the database. The method accepts two arguments, employeeID and attendanceType; attendanceType is either ‘Clock In’ or ’Clock Out’ which is an Enum type in the working database table . It also uses a connection and query string like the buttons above, the query string uses NOW() after VALUES keyword for timestamp which stores the current time in the database. I used the using statement to mitigate the need for a close method. After supplying the field values to the query, I got the integer value of rows affect by the query with the ExecuteNonQuery method. I checked if it was true with an if-else statement to display in a MessageBox a success or failed Message respectively with a MessageBox icon change too. This method did not return a value, it was void.
+
+LoginForm
+AuthenticateUser()
+This method takes two arguments username and password, counts the number of rows where the supplied match the database. It does so by connecting to the DB in a similar fashion to submitBT of employeeRegistrationForm but the SQL query here is a SELECT statement instead of an INSERT, followed by COUNT(*). It selects all the rows from managers_password table where the username and password are a match, the COUNT keyword returns the integer value of that operation. The using() statement shortens the code required by closing the connection and disposing of the trash even if an exception occurs. It does the task of close() statement, dispose statement and part of try-catch block. The command.Parameters.AddWithValue("@username", username) replaces the placeholder values with what was supplied by the user. Finally, the command is run using ExecuteScalar instead of ExecuteReader, this shortens the code required once again by just returning the first row instead of all the rows, converts to an interger and stores in the count variable. The return is true if the count is greater than 0. It can be argued that ExecuteReader and ExecuteScalar have no difference he since the COUNT keyword from the SQL statement returns just a number, but ExecuteReader would create and object, and check the attribute of the object; with ExecuteScalar, that is not required. 
+loginBT
+I use strings to collect the username and password from the fields in the GUI and pass them (by value) as argument to AuthenticateUser method. I store the output of the method in the Boolean variable isAuthenticated. If the code in the following if-statement is true, it will change the value of the DialogResult to 1 (true) and closes the current form, this is used by the AttendanceForm’s button1 (renamed it ReqManBT.) DialogResult is globally used which is why AttendanceForm can access it. It is akin to the return of a form when opened as a dialog box or modally.
+LeaveRequestsManagementForm 
+loadLeaveRequests method
+I used the same connection string, but the query selects all the tuples from leaverequests table on the database with the select statement. I initialized a new object of the dataTable class called leaveRequestsDataTable, the dataTable is a class from System.Data header file. I opened a connection to the database with the using() statement, and with a nested using statement, created a mySqlAdapter object called adapter. The fill method of the adapter populated the leaveRequestsDataTable with the database table (leaverequests) rows and finally used that as the dataSource of the dataGridView.
+updateLeaveRequestStatus 
+The method takes two arguments, request_id and status (leave requests status), the query string here uses an UPDATE keyword to change the status of the leave request in the leaverequest table using the request_id. I used a double using() statement to open the connection and add values to the query string.
+deleteLeaveRequest
+This method only takes request_id as an argument, the query string here uses a DELETE statement to remove a leave request found by request_id. A nested using statement was implemented to insert user (the manger) input at placeholder locations.
+approveBT
+An if statement checks for rows selected by the manger to perform the approve operation. Operations are done on the first selected row, the interger value rowIndex stores the numeric value of said row using dataGridView.SelectedRows[0].Index; dataGridView.SelectedRows[0] returns an object of the chosen row and Index is its actual table Index. The next line accepts an object of that row dataGridView.Rows[rowIndex] and gets the value of request_id using Cells["request_id"].Value and finally, we call the updateLeaveRequestStatus method.
+rejectBT
+This button is a duplicate of the approveBT but with “rejected.”
+deleteBT
+This button uses the same technique as the approveBT.
+LeaveRequestsForm 
+The first step is to pass employee_id to this form from AttendanceForm, that form passes employee_id as a parameter for this form allowing us to use it as an attribute. 
+InsertLeaveRequest method
+This uses a connection string and a query; the query is a MySQL INSERT statement using the employee supplied values to replace the placeholder values when the command gets executed. It has three parameters; dateTime, dateTime, reason.
+submitBT
+It stores the values the employees supplied from the fields in variables and passes them to the InsertLeaveRequest method.
+ClearForm method
+This method resets the fields changed by employees to their defaults. 
